@@ -1,39 +1,53 @@
 <%- include ('partials/_header'); %>
 <!-- <link href="style.css" /> -->
-    <div class="container">
-      <h4>Saldo</h4>
-      <h1>$<%= 1+1 %></h1>
-
-      <div class="inc-exp-container">
-        <div>
-          <h4>Ingreso</h4>
-          <p id="money-plus" class="money plus">+$0.00</p>
-        </div>
-        <div>
-          <h4>Gasto</h4>
-          <p id="money-minus" class="money minus">-$0.00</p>
-        </div>
-        </div>
-
+    
         <h3>Historial</h3>
         <ul id="list" class="list">
-            <thead>
+            <!-- <thead>
                 <tr>
-                    <th>Concepto____________________</th>
-                    <th>Monto</th>
+                    <th>Concepto</th>
+                    <div><th class="text-right">Monto</th></div>
+                    
                 </tr>
-            </thead>
+            </thead> -->
 
                        
             <body>
-                <% for(let i = 0; i < exps.length; i++) { %>
-                    <li class="minus">
-                        <%= exps[i].text %> <span><%= exps[i].amount %></span>
-                        <a href="/delete/<%= exps[i]._id %>" class="delete-btn">x</a>
-                        <a href="/edit/<%= exps[i]._id %>" class="edit-btn">E</a>
-                    </li>
-                <% } %>
-            </body>
+    <% let totalAmount = 0; %>
+    <% let totalMinus = 0; %>
+    <% let totalPlus = 0; %>
+    <% for(let i = 0; i < exps.length; i++) { %>
+        <% totalAmount += exps[i].amount; %>
+        <% if (exps[i].amount < 0) { %>
+          <% totalMinus += exps[i].amount; %>
+      <% } else { %>
+          <% totalPlus += exps[i].amount; %>
+      <% } %>
+      <div class="item-container">
+        <div class="item">
+            <li class="<%= exps[i].amount < 0 ? 'minus' : 'plus' %>">
+                <%= exps[i].text %> <span><%= exps[i].amount %></span>
+                <a href="/delete/<%= exps[i]._id %>" class="delete-btn">x</a>
+            </li>
+        </div>
+        <a href="/edit/<%= exps[i]._id %>" class="edit-btn">Editar</a>
+    </div>
+    <% } %>
+
+    <div class="container">
+      <h4>Saldo</h4>
+    <h1>$ <%= totalAmount %></h1>
+    <div class="inc-exp-container">
+      <div>
+        <h4>Ingresos</h4>
+        <p id="money-plus" class="money plus">+$<%= totalPlus %>.00</p>
+      </div>
+      <div>
+        <h4>Gastos</h4>
+        <p id="money-minus" class="money minus">-$<%= totalMinus %>.00</p>
+      </div>
+      </div>
+</body>
             
 
     <h3>Agregar nueva transacción</h3>

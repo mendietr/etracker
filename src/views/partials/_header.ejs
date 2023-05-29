@@ -151,7 +151,30 @@
     
     .list li:hover .delete-btn {
       opacity: 1;
-    } </style>
+    }
+    .item-container {
+    display: flex;
+    align-items: center;
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.item {
+    border: 0px solid #ccc;
+    padding: 10px;
+}
+
+.edit-btn {
+    justify-self: end;
+}
+
+    
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />

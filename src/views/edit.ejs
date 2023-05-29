@@ -3,21 +3,21 @@
 <!-- FORM -->
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Edit exp</h1>
+        <h1 class="text-center">Editar</h1>
 
-        <div class="col-md-5 mx-auto">
-            <div class="card">
-                <div class="card-body">
+        <div class=container>
+            <div class="container">
+                <div class="container">
                     <form action="/edit/<%= exp._id %>" method="POST">
-                        <div class="form-group mb-3">
-                            <input type="text" name="concepto" placeholder="concepto" value="<%= exp.text %>" class="form-control">
+                        <div>
+                            <input type="text" name="concepto" placeholder="Concepto" value="<%= exp.text %>">
                         </div>
-                        <div class="form-group mb-3">
-                            <input name="amount" cols="80" class="form-control" placeholder="Cantidad"><%= exp.amount %></input>
+                        <div>
+                            <input type="number" name="amount"  placeholder="Cantidad" value="<%= exp.amount %>">
                         </div>
-                        <div class="d-grid gap-1">
-                            <a href="/" class="btn btn-outline-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-success">Save</button>
+                        
+                            <a href="/" class="btn">Cancel</a>
+                            <button type="submit" class="btn">Guardar</button>
                         </div>
                     </form>
                 </div>
