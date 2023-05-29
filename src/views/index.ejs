@@ -1,0 +1,64 @@
+<%- include ('partials/_header'); %>
+<!-- <link href="style.css" /> -->
+    <div class="container">
+      <h4>Saldo</h4>
+      <h1>$<%= 1+1 %></h1>
+
+      <div class="inc-exp-container">
+        <div>
+          <h4>Ingreso</h4>
+          <p id="money-plus" class="money plus">+$0.00</p>
+        </div>
+        <div>
+          <h4>Gasto</h4>
+          <p id="money-minus" class="money minus">-$0.00</p>
+        </div>
+        </div>
+
+        <h3>Historial</h3>
+        <ul id="list" class="list">
+            <thead>
+                <tr>
+                    <th>Concepto____________________</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+
+                       
+            <body>
+                <% for(let i = 0; i < exps.length; i++) { %>
+                    <li class="minus">
+                        <%= exps[i].text %> <span><%= exps[i].amount %></span>
+                        <a href="/delete/<%= exps[i]._id %>" class="delete-btn">x</a>
+                        <a href="/edit/<%= exps[i]._id %>" class="edit-btn">E</a>
+                    </li>
+                <% } %>
+            </body>
+            
+
+    <h3>Agregar nueva transacción</h3>
+</div>
+<form action="/add" method="POST">
+<div>
+</div>
+<form id="form">
+  <div class="form-control">
+      <label for="text">Concepto</label>
+      <input type="text" name="text" placeholder="Introduce el concepto..." />
+    </div>
+    <div class="form-control">
+        <label for="amount"
+        >Monto <br />
+        (negativo - gasto, positivo - ingreso)</label
+        >
+        <input type="number" name="amount" placeholder="Introduce el monto..." />
+    </div>
+    <button class="btn">Agregar</button>
+</form>
+
+
+
+      
+
+     
+  <%- include ('partials/_footer'); %>
