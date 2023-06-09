@@ -10,7 +10,10 @@ const app = express();
 const indexRoutes = require("./src/routes/index");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-const URI = process.env.MONGODB_URI;
+const userDB = document.getElementById("conexionForm");
+userDB.addEventListener("submit", function (event) {
+  event.preventDefault();
+const URI = MONGODB_URI='mongodb+srv://'+userDB+':HHnOQn2B4iVtEdOU@cluster0.pgfsbij.mongodb.net/exps?retryWrites=true&w=majority'
 
 // Conexión a MongoDB
 mongoose.connect(URI, {
@@ -23,6 +26,7 @@ mongoose.connect(URI, {
   .catch(error => {
     console.log("Error al conectar a la base de datos:", error);
   });
+});
 
   // Settings
 app.set("port", process.env.PORT || 3000);
