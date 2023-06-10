@@ -1,9 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const Exp = require("../models/exps.js");
-
+const mongoose = require("mongoose");
 
 router.get("/", async (req, res) =>
+{
+    
+    console.log();
+    res.render("home", {});
+});
+
+router.get("/bd", async (req, res) =>
 {
     const exps = await Exp.find();
     console.log(exps);
@@ -48,6 +55,23 @@ router.get("/delete/:id", async (req, res) =>
     res.redirect("/");
 });
 
+router.post('/db/submit', (req, res) => {
+    const bd1 = req.body.db1; 
+    const URI ='mongodb+srv://' + bd1 +
+      ':HHnOQn2B4iVtEdOU@cluster0.pgfsbij.mongodb.net/exps?retryWrites=true&w=majority';
+      console.log(bd1)
+      mongoose.connect(URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      })
+        .then(() => {
+          console.log("Conexión exitosa a la base de datos");
+        })
+        .catch(error => {
+          console.log("Error al conectar a la base de datos:", error);
+        });
+        res.redirect("/bd")
+      });
 
 // Exports
 module.exports = router;

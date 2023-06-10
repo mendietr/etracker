@@ -48,36 +48,36 @@ app.use("/", indexRoutes);
           console.log("Server on port " + app.get("port"));
         });
         
-        const inquirerPromise = import('inquirer');
+      //   const inquirerPromise = import('inquirer');
 
-        inquirerPromise
-          .then(inquirerModule => {
-            const inquirer = inquirerModule.default;
+      //   inquirerPromise
+      //     .then(inquirerModule => {
+      //       const inquirer = inquirerModule.default;
 
-        inquirer.prompt([
-          {
-            type: 'input',
-            name: 'uri',
-            message: 'Ingrese el URI de conexión a la base de datos:'
-          }
-        ])
-        .then(answers => {
-        const uri = answers.uri;
-        const URI = MONGODB_URI='mongodb+srv://'+uri+':HHnOQn2B4iVtEdOU@cluster0.pgfsbij.mongodb.net/exps?retryWrites=true&w=majority'
+      //   inquirer.prompt([
+      //     {
+      //       type: 'input',
+      //       name: 'uri',
+      //       message: 'Ingrese el URI de conexión a la base de datos:'
+      //     }
+      //   ])
+      //   .then(answers => {
+      //   const uri = answers.uri;
+      //   const URI = MONGODB_URI='mongodb+srv://'+uri+':HHnOQn2B4iVtEdOU@cluster0.pgfsbij.mongodb.net/exps?retryWrites=true&w=majority'
         
-        // Conexión a MongoDB
-        mongoose.connect(URI, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true
-        })
-          .then(() => {
-            console.log("Conexión exitosa a la base de datos");
-          })
-          .catch(error => {
-            console.log("Error al conectar a la base de datos:", error);
-          });
-        });
-      })
-        .catch(error => {
-          console.log("Error al importar el módulo inquirer:", error);
-        });
+      //   // Conexión a MongoDB
+      //   mongoose.connect(URI, {
+      //     useNewUrlParser: true,
+      //     useUnifiedTopology: true
+      //   })
+      //     .then(() => {
+      //       console.log("Conexión exitosa a la base de datos");
+      //     })
+      //     .catch(error => {
+      //       console.log("Error al conectar a la base de datos:", error);
+      //     });
+      //   });
+      // })
+      //   .catch(error => {
+      //     console.log("Error al importar el módulo inquirer:", error);
+      //   });
