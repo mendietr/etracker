@@ -5,6 +5,8 @@
     <div class="row">
         <h1 class="text-center">Editar</h1>
 
+        <a href="/db/delete/<%= exp._id %>" class="edit-btn" style="color: red;">Borrar</a>
+
         <div class=container>
             <div class="container">
                 <div class="container">
@@ -16,7 +18,7 @@
                             <input type="number" name="amount"  placeholder="Cantidad" value="<%= exp.amount %>">
                         </div>
                         
-                            <a href="/" class="btn">Cancel</a>
+                            <a href="/bd" class="btn">Cancel</a>
                             <button type="submit" class="btn">Guardar</button>
                         </div>
                     </form>
