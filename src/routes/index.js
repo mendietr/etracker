@@ -21,14 +21,14 @@ router.post("/add", async (req, res) =>
 {   console.log(new Exp(req.body));
     const exp = new Exp(req.body);
     await exp.save();
-    res.redirect("/");
+    res.redirect("/bd");
 });
 
 router.post("/edit/:id", async (req, res) =>
 {
     const {id} = req.params;
     await Exp.updateOne({_id: id}, req.body);
-    res.redirect("/");
+    res.redirect("/bd");
 });
 
 
@@ -38,7 +38,7 @@ router.get("/done/:id", async (req, res) =>
     const exp = await Exp.findById(id);
     exp.status = !exp.status;
     await exp.save();
-    res.redirect("/");
+    res.redirect("/bd");
 });
 
 router.get("/edit/:id", async (req, res) =>
@@ -52,7 +52,7 @@ router.get("/delete/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.deleteOne({_id: id});
-    res.redirect("/");
+    res.redirect("/bd");
 });
 
 router.post('/db/submit', (req, res) => {
