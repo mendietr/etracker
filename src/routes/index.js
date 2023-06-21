@@ -48,7 +48,7 @@ router.get("/edit/:id", async (req, res) =>
     res.render("edit", {exp});
 });
 
-router.get("/bd/delete/:id", async (req, res) =>
+router.get("/db/delete/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.deleteOne({_id: id});
