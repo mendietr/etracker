@@ -27,7 +27,7 @@
         <div class="item">
             <li class="<%= exps[i].amount < 0 ? 'minus' : 'plus' %>">
                 <%= exps[i].text %> <span><%= exps[i].amount %></span>
-                <a href="/delete/<%= exps[i]._id %>" class="delete-btn">x</a>
+                <a href="/db/delete/<%= exps[i]._id %>" class="delete-btn">x</a>
             </li>
         </div>
         <a href="/edit/<%= exps[i]._id %>" class="edit-btn">Editar</a>
