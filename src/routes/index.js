@@ -41,7 +41,7 @@ router.get("/done/:id", async (req, res) =>
     res.redirect("/bd");
 });
 
-router.post("/edit/:id", async (req, res) =>
+router.get("/edit/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.findById(id);
