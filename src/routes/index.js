@@ -48,7 +48,7 @@ router.get("/edit/:id", async (req, res) =>
     res.render("edit", {exp});
 });
 
-router.post("/db/submit", async (req, res) =>
+router.post("/db/update", async (req, res) =>
 {   
     const exps = new Exp(req.body);
     await exps.save();
