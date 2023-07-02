@@ -41,14 +41,14 @@ router.get("/done/:id", async (req, res) =>
     res.redirect("/bd");
 });
 
-router.get("/edit/:id", async (req, res) =>
+router.post("/edit/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.findById(id);
     res.render("edit", {exp});
 });
 
-router.get("/db/delete/:id", async (req, res) =>
+router.post("/db/delete/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.deleteOne({_id: id});
