@@ -48,7 +48,14 @@ router.get("/edit/:id", async (req, res) =>
     res.render("edit", {exp});
 });
 
-router.post("/db/delete/:id", async (req, res) =>
+router.post("/db/submit", async (req, res) =>
+{   
+    const exps = new Exp(req.body);
+    await exps.save();
+    res.redirect("/db");
+});
+
+router.get("/db/delete/:id", async (req, res) =>
 {
     const {id} = req.params;
     const exp = await Exp.deleteOne({_id: id});
